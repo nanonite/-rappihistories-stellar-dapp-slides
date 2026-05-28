@@ -26,14 +26,11 @@ jobs:
         with:
           node-version: 22
 
-      - name: Install pnpm
-        run: npm install -g pnpm@9.15.0
-
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+        run: npm install --no-package-lock
 
       - name: Build deck
-        run: pnpm run build -- --base "/${{ github.event.repository.name }}/"
+        run: npx slidev build --base "/${{ github.event.repository.name }}/"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
