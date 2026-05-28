@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  --rh-navy: #0B3D5C;
+  --rh-teal: #0EA5E9;
+  --rh-green: #10B981;
+  --rh-red: #DC2626;
+  --rh-cream: #FAF8F2;
+  --rh-slate-50: #F8FAFC;
+  --rh-slate-200: #E2E8F0;
+  --rh-slate-700: #334155;
+  --rh-slate-800: #1E293B;
+  --rh-slate-900: #0F172A;
+}
+
+.slidev-layout {
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  background: var(--rh-cream);
+  color: var(--rh-slate-800);
+}
+.slidev-layout h1,
+.slidev-layout h2,
+.slidev-layout h3 {
+  font-family: 'IBM Plex Serif', Georgia, serif;
+  font-weight: 500;
+  color: var(--rh-navy);
+  letter-spacing: -0.015em;
+}
+.slidev-layout h1 { font-weight: 600; }
+.slidev-layout code,
+.slidev-layout pre {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+}
+.slidev-layout blockquote {
+  border-left: 3px solid var(--rh-teal);
+  color: var(--rh-slate-700);
+  font-style: normal;
+}
+.slidev-layout table {
+  font-size: 0.9em;
+}
+.slidev-layout table th {
+  color: var(--rh-navy);
+  font-weight: 600;
+  border-bottom: 2px solid var(--rh-navy);
+}
+.slidev-layout table td {
+  border-bottom: 1px solid var(--rh-slate-200);
+}
+
+.footer-note {
+  margin-top: 2.5rem;
+  font-size: 0.85em;
+  color: var(--rh-slate-700);
+  border-top: 1px solid var(--rh-slate-200);
+  padding-top: 0.75rem;
+}
+
+.callout {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: rgba(14, 165, 233, 0.08);
+  border-left: 3px solid var(--rh-teal);
+  border-radius: 0 6px 6px 0;
+  font-size: 0.95em;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 1.5rem 0 1rem;
+}
+
+.dark .slidev-layout {
+  background: var(--rh-slate-900);
+  color: var(--rh-slate-200);
+}
+.dark .slidev-layout h1,
+.dark .slidev-layout h2,
+.dark .slidev-layout h3 {
+  color: #93C5FD;
+}
+.dark .slidev-layout blockquote {
+  border-left-color: #38BDF8;
+  color: var(--rh-slate-200);
+}
+.dark .slidev-layout table th {
+  color: #93C5FD;
+  border-bottom-color: #38BDF8;
+}
+.dark .slidev-layout table td {
+  border-bottom-color: rgba(226, 232, 240, 0.15);
+}
+.dark .footer-note {
+  color: var(--rh-slate-200);
+  border-top-color: rgba(226, 232, 240, 0.15);
+}
+.dark .callout {
+  background: rgba(56, 189, 248, 0.12);
+  border-left-color: #38BDF8;
+}
