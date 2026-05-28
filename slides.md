@@ -2,8 +2,8 @@
 theme: default
 title: Rappihistories
 info: |
-  Patient-owned clinical history on Stellar — a demo of consent, audit,
-  and the bridge between care and care delivery.
+  Patient-owned clinical history on Stellar.
+  Consent, audit, and the bridge between care and care delivery.
 class: text-center
 highlighter: shiki
 drawings:
@@ -21,41 +21,85 @@ fonts:
 
 Patient-owned clinical history on Stellar.
 
-A demo of consent, audit, and the bridge between care and care delivery.
+Consent. Audit. The bridge between care and care delivery.
+
+<div class="footer-note">
+Built on Stellar / Soroban. Patient first. Predicate first.
+</div>
+
+---
+layout: statement
+---
+
+# The patient is the only person present at every encounter.
+
+And the least visible in the record.
 
 ---
 layout: section
 ---
 
-## The patient is the last to know.
+# The problem
 
 ---
 
-## A clinical chart per institution
+## A chart per institution
 
-- Records live in clinics, labs, hospital chains, insurers.
-- A new clinician means a new chart, a new gap, a new request.
-- The patient is the only person present at every encounter.
-- They have the least visibility into their own history.
+- The lab keeps its results.
+- The hospital keeps its discharge summary.
+- The clinic keeps its notes.
+- The pharmacy keeps its dispenses.
+- The patient keeps a copy of nothing.
 
 <div class="footer-note">
-The system already exists. It is just not under the patient's control.
+Every new clinician is a cold start.
+</div>
+
+---
+
+## What patients ask for
+
+- "Where is my MRI?"
+- "Did my last prescription get filled?"
+- "Who has access to my history right now?"
+- "Can I take that access back?"
+
+None of these questions have a one-screen answer today.
+
+---
+
+## What clinicians ask for
+
+- The history, not a fax thread.
+- A way to write that the next clinician will trust.
+- Drugs that exist and that the pharmacy actually has.
+- A signature that means something legally tomorrow.
+
+<div class="footer-note">
+Two different reading lists. Same missing rail.
 </div>
 
 ---
 layout: section
 ---
 
-## Stub the decentralization. Never stub the predicate.
+# The thesis
+
+---
+layout: statement
+---
+
+# Stub the decentralization.<br/>Never stub the predicate.
 
 ---
 
 ## What that means
 
-The hard parts of decentralization can be centralized for an MVP — KMS,
-admin control, credential issuance.
+The hard parts of decentralization can be centralized for an MVP.
 
-The **access predicate** cannot be stubbed.
+KMS. Admin control. Credential issuance. Custody.
+
+The **access predicate** cannot be stubbed:
 
 > Who can read what, when, and why.
 
@@ -63,9 +107,61 @@ The predicate is the line. Everything else is operational comfort.
 
 ---
 
+## Patient as principal
+
+In the contract, the patient is not "the data subject."
+
+The patient is the **principal** who authorizes every read, every write,
+every dispense. Their wallet is the signature.
+
+Consent is a transaction. Not a checkbox. Not a form. Not a fax.
+
+---
+
+## On chain, off chain
+
+<div class="two-col">
+
+<div>
+
+**On chain**
+
+- Identities (pseudonymous)
+- Grants and write grants
+- Commitments (ciphertext hashes)
+- Audit events
+- Prescription state
+- Supply-chain reservations
+
+</div>
+
+<div>
+
+**Off chain, encrypted**
+
+- Clinical notes
+- Prescription payloads
+- Dispense receipts
+- Attachments and imaging
+
+</div>
+
+</div>
+
+The chain coordinates **who is allowed**.
+The store holds **what is encrypted**.
+
+---
+layout: section
+---
+
+# The architecture
+
+---
+
 ## The closed loop
 
-```mermaid {scale: 0.75}
+```mermaid {scale: 0.7}
 flowchart LR
   P((Patient)) -->|grant| AB[access-broker]
   C((Clinician)) -->|request| AB
@@ -96,36 +192,38 @@ The demo seeds three Testnet wallets, one per role. Same rulebook on Mainnet.
 
 ---
 
-## Off-chain PHI, on-chain consent
+## Commitments and locators
 
-<div class="two-col">
+Every clinical event leaves two on-chain traces:
 
-<div>
+- **Commitment** — SHA-256 of the encrypted payload.
+- **Locator** — a pointer to the ciphertext in object storage.
 
-**On chain**
+The chain promises:
 
-- Identities
-- Grants
-- Commitments
-- Audit events
+- This locator was registered by this principal at this time.
+- The ciphertext at the locator hashes to this commitment.
 
-</div>
+No PHI ever crosses the chain.
 
-<div>
+---
 
-**Off chain**
+## The KMS gate
 
-- Clinical notes
-- Prescription payloads
-- Dispense receipts
-- Attachments
+The KMS is the only place that can release a clinical key.
 
-</div>
+It releases only after re-verifying the chain state itself.
 
-</div>
+Release predicate, checked on every request:
 
-The chain coordinates **who is allowed**.
-The store holds **what is encrypted**.
+- The grant exists.
+- It is not revoked.
+- It is not vetoed.
+- Reveal time has passed.
+- Expiry time has not.
+- The requester is the principal named in the grant.
+
+All six conditions, every time.
 
 ---
 
@@ -133,7 +231,7 @@ The store holds **what is encrypted**.
 
 - Every grant has an explicit revoke path.
 - The patient can revoke from their dashboard at any time.
-- On disconnect, the UI prompts the patient to revoke before leaving.
+- On disconnect, the UI prompts revoke before leaving.
 - The next access request returns `REVOKED`.
 
 <div class="callout">
@@ -142,36 +240,193 @@ honest about that limit instead of pretending it can be reversed.
 </div>
 
 ---
+layout: section
+---
 
-## The demo, in seven beats
-
-1. Patient opens the dashboard. Doctor opens the dashboard.
-2. Doctor requests access. Patient sees it. Patient grants.
-3. KMS releases. Doctor decrypts. Doctor reads.
-4. Doctor prescribes. Pharmacy is selected. A unit is reserved.
-5. Patient arrives at the pharmacy. Both connect.
-6. Patient co-signs the dispense. The receipt is written on chain.
-7. Patient revokes. The doctor's next request is rejected.
+# The demo
 
 ---
 
-## What Stellar gives us
+## Three browsers, three wallets
 
-- A shared notary for consent and audit.
-- Cheap, fast transactions — clinical events don't need a backbone block reward.
-- Soroban auth — multi-party signing is a first-class operation.
-- A small attack surface — the contract stores commitments, not content.
-- A demoable testnet — the same path that runs locally runs publicly.
+The demo runs across three browser sessions, each with a different
+Stellar Testnet wallet:
+
+- **Patient browser** — holds the principal wallet
+- **Clinician browser** — holds the doctor wallet
+- **Pharmacy browser** — holds the pharmacy wallet
+
+Each role sees a different dashboard. They all hit the same contracts.
 
 ---
 
-## Roadmap
+## Beat one — grant and read
+
+```mermaid {scale: 0.65}
+sequenceDiagram
+  participant C as Clinician
+  participant W as Web
+  participant P as Patient
+  participant AB as access-broker
+  participant K as kms-gate
+  C->>W: request access (subject, scope)
+  W->>P: pending request notification
+  P->>W: approve, sign create_grant
+  W->>AB: create_grant tx
+  AB-->>W: grant id
+  C->>K: release request (wallet-signed)
+  K-->>C: ciphertext key
+  C->>C: decrypt locally
+```
+
+---
+
+## Beat two — prescribe and reserve
+
+- Clinician composes the prescription. Encrypts locally.
+- Uploads ciphertext. Submits the commitment on chain via `prescription.issue`.
+- Selects a pharmacy from the seeded directory.
+- Reserves an inventory unit. The pharmacy sees the reservation in real time.
+
+The patient sees the prescription in their dashboard, attributed to the doctor.
+
+---
+
+## Beat three — dispense
+
+At the pharmacy:
+
+- Pharmacy sees the active reservation.
+- Patient connects, sees the pending dispense.
+- Patient co-signs from their wallet.
+- Pharmacy submits the dispense — two signatures, one transaction.
+- Receipt is written to the access broker.
+
+<div class="footer-note">
+Soroban makes the two-signer envelope first-class. No off-chain relay.
+</div>
+
+---
+
+## Beat four — revoke
+
+- Patient revokes the read grant from their dashboard.
+- The clinician's next read attempt returns `REVOKED`.
+- The history of what was read remains in the audit log.
+- The bytes that were already released are not magic-returned.
+
+Honest about the limit. Visible in the runbook.
+
+---
+layout: section
+---
+
+# Why Stellar
+
+---
+
+## Fast. Cheap. Soft-final.
+
+- About a five-second ledger close.
+- Cents-per-event fee envelope.
+- Soft finality the moment a tx is included.
+- An ordinary clinical event is affordable to log on chain.
+- Audit is no longer a quarterly report. It is a stream.
+
+---
+
+## Soroban auth makes multi-party signing easy
+
+The pharmacy dispense step is a single transaction with two required signers
+— patient and pharmacy.
+
+Soroban exposes `require_auth(addr)` as a first-class primitive. The
+contract states the rule; the runtime checks the proofs.
+
+No off-chain co-sign relay. No notary service. Just the transaction.
+
+---
+
+## Auditability without surveillance
+
+- Every grant, revoke, request, release, prescription, reservation, and
+  dispense is an event on chain.
+- The events do not contain PHI. They contain commitments and principal
+  identifiers.
+- Anyone can verify the chain is consistent.
+- Nobody learns what was treated.
+
+Audit and privacy stop fighting.
+
+---
+layout: section
+---
+
+# What we centralized
+
+---
+
+## Honest about it
+
+| Piece | Why centralized for MVP | What that costs |
+| --- | --- | --- |
+| KMS gate | One service, no HSM mesh | Forward-only secrecy |
+| Identity issuance | Seeded role wallets | Not patient-portable yet |
+| Storage | Cloudflare R2 | Single-vendor surface |
+| Indexer | One Postgres | One operational owner |
+
+Each cell is a known liability. None of them weakens the predicate.
+
+---
+
+## The predicate stays. Always.
+
+The MVP runs on a single KMS. A real deployment runs on real KMS.
+
+The MVP uses one indexer. A real deployment runs many.
+
+What does **not** change:
+
+- The grant decides.
+- The revoke decides.
+- The chain witnesses.
+- The patient is the principal.
+
+---
+layout: section
+---
+
+# Roadmap
+
+---
+
+## Phases
 
 | Phase | What is proven | Status |
 | --- | --- | --- |
 | Local manual MVP | Closed loop on stellar-local | In progress |
-| Stellar Testnet | Same loop, two browsers, public | Designed |
-| Beyond | Real KMS, regulated identity, production PHI | Out of scope |
+| Stellar Testnet | Same loop, three browsers, public | Designed |
+| Hardened KMS | Bytes-revoke and HSM custody | Out of scope |
+| Regulated identity | Verifiable clinician credentials | Out of scope |
+| Mainnet | Patient-owned PHI at scale | Long-term |
+
+---
+
+## What it takes to go real
+
+- A regulated KMS — Cloud KMS, HSM, or sealed enclave.
+- A clinician credential authority — verifiable claims on chain.
+- A patient identity story — wallet recovery, delegation, end of life.
+- A storage SLA — durability, regional residency, breach response.
+- An ops story — monitoring, paging, incident review.
+
+The MVP makes these concrete. They are not theoretical anymore.
+
+---
+layout: section
+---
+
+# Closing
 
 ---
 
@@ -181,6 +436,9 @@ honest about that limit instead of pretending it can be reversed.
 - Consent is a **transaction**, not a checkbox.
 - Audit is an **event log**, not a quarterly report.
 - Revoke is a **verb**, not a customer-service ticket.
+- The prescription is a **bridge**, not a printed sheet.
+
+The dApp is the demo. The architecture is the artifact.
 
 ---
 layout: center
@@ -190,4 +448,5 @@ class: text-center
 # Thank you
 
 Built on Stellar / Soroban.
+
 Patient first. Predicate first.
