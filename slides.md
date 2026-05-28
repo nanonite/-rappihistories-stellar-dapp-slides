@@ -2,8 +2,8 @@
 theme: default
 title: Rappihistories
 info: |
-  Patient-owned clinical history on Stellar.
-  Consent, audit, and the bridge between care and care delivery.
+  Historia clínica propiedad del paciente sobre Stellar.
+  Consentimiento, auditoría, y el puente entre el cuidado y su entrega.
 class: text-center
 highlighter: shiki
 drawings:
@@ -19,434 +19,477 @@ fonts:
 
 # Rappihistories
 
-Patient-owned clinical history on Stellar.
+Historia clínica propiedad del paciente sobre Stellar.
 
-Consent. Audit. The bridge between care and care delivery.
+Consentimiento. Auditoría. El puente entre el cuidado y su entrega.
 
 <div class="footer-note">
-Built on Stellar / Soroban. Patient first. Predicate first.
+Construido sobre Stellar / Soroban. El paciente primero. El predicado primero.
 </div>
 
 ---
 layout: statement
 ---
 
-# The patient is the only person present at every encounter.
+# El paciente es la única persona presente en cada encuentro.
 
-And the least visible in the record.
-
----
-layout: section
----
-
-# The problem
-
----
-
-## A chart per institution
-
-- The lab keeps its results.
-- The hospital keeps its discharge summary.
-- The clinic keeps its notes.
-- The pharmacy keeps its dispenses.
-- The patient keeps a copy of nothing.
-
-<div class="footer-note">
-Every new clinician is a cold start.
-</div>
-
----
-
-## What patients ask for
-
-- "Where is my MRI?"
-- "Did my last prescription get filled?"
-- "Who has access to my history right now?"
-- "Can I take that access back?"
-
-None of these questions have a one-screen answer today.
-
----
-
-## What clinicians ask for
-
-- The history, not a fax thread.
-- A way to write that the next clinician will trust.
-- Drugs that exist and that the pharmacy actually has.
-- A signature that means something legally tomorrow.
-
-<div class="footer-note">
-Two different reading lists. Same missing rail.
-</div>
+Y la menos visible en el registro.
 
 ---
 layout: section
 ---
 
-# The thesis
+# El problema
 
 ---
 layout: statement
 ---
 
-# Stub the decentralization.<br/>Never stub the predicate.
+# Millones de personas viven con su información médica fragmentada.
+
+Entre hospitales, ciudades, aseguradoras y países.
 
 ---
 
-## What that means
+## La fragmentación tiene costo clínico
 
-The hard parts of decentralization can be centralized for an MVP.
+- Más hospitalizaciones.
+- Mayores costos.
+- Peores resultados clínicos.
 
-KMS. Admin control. Credential issuance. Custody.
+Diversos estudios lo han documentado durante años.
 
-The **access predicate** cannot be stubbed:
-
-> Who can read what, when, and why.
-
-The predicate is the line. Everything else is operational comfort.
-
----
-
-## Patient as principal
-
-In the contract, the patient is not "the data subject."
-
-The patient is the **principal** who authorizes every read, every write,
-every dispense. Their wallet is the signature.
-
-Consent is a transaction. Not a checkbox. Not a form. Not a fax.
+<div class="footer-note">
+La OMS viene impulsando la interoperabilidad y la continuidad del cuidado como pilares fundamentales de los sistemas de salud modernos.
+</div>
 
 ---
 
-## On chain, off chain
+## La movilidad global expone la fractura
+
+Las personas se mueven entre ciudades, países y sistemas.
+
+La información clínica se queda atrapada en sistemas que no se comunican entre sí.
+
+En una emergencia, un médico puede no conocer:
+
+- Alergias críticas.
+- Medicamentos previos.
+- Antecedentes vitales del paciente.
+
+---
+
+## Una historia por institución
+
+- El laboratorio guarda sus resultados.
+- El hospital guarda su epicrisis.
+- La clínica guarda sus notas.
+- La farmacia guarda sus dispensaciones.
+- El paciente no guarda copia de nada.
+
+<div class="footer-note">
+Cada nuevo clínico es un arranque en frío.
+</div>
+
+---
+
+## Lo que los pacientes preguntan
+
+- "¿Dónde está mi resonancia?"
+- "¿Mi última receta se despachó?"
+- "¿Quién tiene acceso a mi historia ahora mismo?"
+- "¿Puedo retirar ese acceso?"
+
+Ninguna de estas preguntas tiene respuesta en una sola pantalla hoy.
+
+---
+
+## Lo que los clínicos preguntan
+
+- La historia, no un hilo de fax.
+- Una forma de escribir en la que el próximo clínico confíe.
+- Medicamentos que existen y que la farmacia realmente tiene.
+- Una firma que signifique algo legal el día de mañana.
+
+<div class="footer-note">
+Dos listas de lectura distintas. La misma vía faltante.
+</div>
+
+---
+layout: section
+---
+
+# La tesis
+
+---
+
+## Nuestra propuesta
+
+Construir una infraestructura **interoperable**, **segura**, y **centrada en el paciente**.
+
+Donde el acceso clínico es verificable, sin comprometer la privacidad de la información médica.
+
+---
+layout: statement
+---
+
+# Simular la descentralización.<br/>Jamás simular el predicado.
+
+---
+
+## Qué significa
+
+Las partes difíciles de la descentralización se pueden centralizar para un MVP.
+
+KMS. Control administrativo. Emisión de credenciales. Custodia.
+
+El **predicado de acceso** no se puede simular:
+
+> Quién puede leer qué, cuándo, y por qué.
+
+El predicado es la línea. Todo lo demás es comodidad operativa.
+
+---
+
+## El paciente como principal
+
+En el contrato, el paciente no es "el sujeto de los datos".
+
+El paciente es el **principal** que autoriza cada lectura, cada escritura,
+cada dispensación. Su billetera es la firma.
+
+El consentimiento es una transacción. No una casilla. No un formulario. No un fax.
+
+---
+
+## En cadena, fuera de cadena
 
 <div class="two-col">
 
 <div>
 
-**On chain**
+**En cadena**
 
-- Identities (pseudonymous)
-- Grants and write grants
-- Commitments (ciphertext hashes)
-- Audit events
-- Prescription state
-- Supply-chain reservations
+- Identidades (seudónimas)
+- Autorizaciones de lectura y de escritura
+- Compromisos (hashes del cifrado)
+- Eventos de auditoría
+- Estado de prescripción
+- Reservas de cadena de suministro
 
 </div>
 
 <div>
 
-**Off chain, encrypted**
+**Fuera de cadena, cifrado**
 
-- Clinical notes
-- Prescription payloads
-- Dispense receipts
-- Attachments and imaging
-
-</div>
+- Notas clínicas
+- Payloads de prescripción
+- Recibos de dispensación
+- Adjuntos e imagenología
 
 </div>
 
-The chain coordinates **who is allowed**.
-The store holds **what is encrypted**.
+</div>
+
+La cadena coordina **quién está autorizado**.
+El almacén guarda **qué está cifrado**.
 
 ---
 layout: section
 ---
 
-# The architecture
+# La arquitectura
 
 ---
 
-## The closed loop
+## El ciclo cerrado
 
 ```mermaid {scale: 0.7}
 flowchart LR
-  P((Patient)) -->|grant| AB[access-broker]
-  C((Clinician)) -->|request| AB
-  AB -->|release token| KMS[kms-gate]
-  KMS -->|ciphertext key| C
-  C -->|prescription| RX[prescription]
+  P((Paciente)) -->|autoriza| AB[access-broker]
+  C((Clínico)) -->|solicita| AB
+  AB -->|token de liberación| KMS[kms-gate]
+  KMS -->|clave del cifrado| C
+  C -->|prescripción| RX[prescription]
   RX --> SC[supplychain]
-  SC --> Ph((Pharmacy))
-  Ph -->|dispense, patient co-sign| RX
-  RX -->|receipt| AB
+  SC --> Ph((Farmacia))
+  Ph -->|dispensación, co-firma del paciente| RX
+  RX -->|recibo| AB
 ```
 
-Seven steps. Three actors. One trust boundary.
+Siete pasos. Tres actores. Una frontera de confianza.
 
 ---
 
-## Three roles, one rulebook
+## Tres roles, un único reglamento
 
-| Role | What they bring | What the contract checks |
+| Rol | Lo que aporta | Lo que el contrato verifica |
 | --- | --- | --- |
-| Patient | Wallet, consent decisions | Subject of every grant |
-| Clinician | Wallet, professional credential | Authored under a live grant |
-| Pharmacy | Wallet, inventory | Dispenses only to the named patient |
+| Paciente | Billetera, decisiones de consentimiento | Sujeto de cada autorización |
+| Clínico | Billetera, credencial profesional | Escribió bajo autorización vigente |
+| Farmacia | Billetera, inventario | Dispensa solo al paciente nombrado |
 
 <div class="footer-note">
-The demo seeds three Testnet wallets, one per role. Same rulebook on Mainnet.
+La demo siembra tres billeteras de Testnet, una por rol. El mismo reglamento en Mainnet.
 </div>
 
 ---
 
-## Commitments and locators
+## Compromisos y localizadores
 
-Every clinical event leaves two on-chain traces:
+Cada evento clínico deja dos rastros en cadena:
 
-- **Commitment** — SHA-256 of the encrypted payload.
-- **Locator** — a pointer to the ciphertext in object storage.
+- **Compromiso** — SHA-256 del payload cifrado.
+- **Localizador** — un puntero al cifrado en el almacenamiento de objetos.
 
-The chain promises:
+La cadena promete:
 
-- This locator was registered by this principal at this time.
-- The ciphertext at the locator hashes to this commitment.
+- Este localizador fue registrado por este principal en este momento.
+- El cifrado en el localizador tiene este compromiso como hash.
 
-No PHI ever crosses the chain.
-
----
-
-## The KMS gate
-
-The KMS is the only place that can release a clinical key.
-
-It releases only after re-verifying the chain state itself.
-
-Release predicate, checked on every request:
-
-- The grant exists.
-- It is not revoked.
-- It is not vetoed.
-- Reveal time has passed.
-- Expiry time has not.
-- The requester is the principal named in the grant.
-
-All six conditions, every time.
+Ningún dato clínico personal cruza la cadena.
 
 ---
 
-## Revoke is a first-class verb
+## El portal KMS
 
-- Every grant has an explicit revoke path.
-- The patient can revoke from their dashboard at any time.
-- On disconnect, the UI prompts revoke before leaving.
-- The next access request returns `REVOKED`.
+El KMS es el único lugar que puede liberar una clave clínica.
+
+Solo libera después de re-verificar el estado de la cadena.
+
+Predicado de liberación, verificado en cada solicitud:
+
+- La autorización existe.
+- No está revocada.
+- No tiene veto.
+- El tiempo de revelación ya pasó.
+- El tiempo de expiración no ha pasado.
+- El solicitante es el principal nombrado en la autorización.
+
+Las seis condiciones, cada vez.
+
+---
+
+## Revocar es un verbo de primera clase
+
+- Cada autorización tiene un camino explícito de revocación.
+- El paciente puede revocar desde su tablero en cualquier momento.
+- Al desconectarse, la interfaz propone revocar antes de salir.
+- La siguiente solicitud de acceso retorna `REVOKED`.
 
 <div class="callout">
-Forward-only: bytes already released cannot be unsent. The design is
-honest about that limit instead of pretending it can be reversed.
+Solo hacia adelante: los bytes ya liberados no se pueden des-enviar. El diseño
+es honesto sobre ese límite en vez de pretender que se puede revertir.
 </div>
 
 ---
 layout: section
 ---
 
-# The demo
+# La demo
 
 ---
 
-## Three browsers, three wallets
+## Tres navegadores, tres billeteras
 
-The demo runs across three browser sessions, each with a different
-Stellar Testnet wallet:
+La demo corre en tres sesiones de navegador, cada una con una billetera
+distinta de Stellar Testnet:
 
-- **Patient browser** — holds the principal wallet
-- **Clinician browser** — holds the doctor wallet
-- **Pharmacy browser** — holds the pharmacy wallet
+- **Navegador del paciente** — guarda la billetera del principal
+- **Navegador del clínico** — guarda la billetera del médico
+- **Navegador de la farmacia** — guarda la billetera de la farmacia
 
-Each role sees a different dashboard. They all hit the same contracts.
+Cada rol ve un tablero distinto. Todos llegan a los mismos contratos.
 
 ---
 
-## Beat one — grant and read
+## Tiempo uno — autorizar y leer
 
 ```mermaid {scale: 0.65}
 sequenceDiagram
-  participant C as Clinician
+  participant C as Clínico
   participant W as Web
-  participant P as Patient
+  participant P as Paciente
   participant AB as access-broker
   participant K as kms-gate
-  C->>W: request access (subject, scope)
-  W->>P: pending request notification
-  P->>W: approve, sign create_grant
-  W->>AB: create_grant tx
-  AB-->>W: grant id
-  C->>K: release request (wallet-signed)
-  K-->>C: ciphertext key
-  C->>C: decrypt locally
+  C->>W: solicita acceso (sujeto, alcance)
+  W->>P: notificación de solicitud pendiente
+  P->>W: aprueba, firma create_grant
+  W->>AB: transacción create_grant
+  AB-->>W: id de autorización
+  C->>K: solicitud de liberación (firmada por billetera)
+  K-->>C: clave del cifrado
+  C->>C: descifra localmente
 ```
 
 ---
 
-## Beat two — prescribe and reserve
+## Tiempo dos — prescribir y reservar
 
-- Clinician composes the prescription. Encrypts locally.
-- Uploads ciphertext. Submits the commitment on chain via `prescription.issue`.
-- Selects a pharmacy from the seeded directory.
-- Reserves an inventory unit. The pharmacy sees the reservation in real time.
+- El clínico compone la prescripción. Cifra localmente.
+- Sube el cifrado. Envía el compromiso en cadena vía `prescription.issue`.
+- Elige una farmacia del directorio sembrado.
+- Reserva una unidad de inventario. La farmacia ve la reserva en tiempo real.
 
-The patient sees the prescription in their dashboard, attributed to the doctor.
+El paciente ve la prescripción en su tablero, atribuida al médico.
 
 ---
 
-## Beat three — dispense
+## Tiempo tres — dispensar
 
-At the pharmacy:
+En la farmacia:
 
-- Pharmacy sees the active reservation.
-- Patient connects, sees the pending dispense.
-- Patient co-signs from their wallet.
-- Pharmacy submits the dispense — two signatures, one transaction.
-- Receipt is written to the access broker.
+- La farmacia ve la reserva activa.
+- El paciente se conecta, ve la dispensación pendiente.
+- El paciente co-firma desde su billetera.
+- La farmacia envía la dispensación — dos firmas, una transacción.
+- El recibo se escribe en el access broker.
 
 <div class="footer-note">
-Soroban makes the two-signer envelope first-class. No off-chain relay.
+Soroban hace que el sobre de dos firmantes sea de primera clase. Sin relé fuera de cadena.
 </div>
 
 ---
 
-## Beat four — revoke
+## Tiempo cuatro — revocar
 
-- Patient revokes the read grant from their dashboard.
-- The clinician's next read attempt returns `REVOKED`.
-- The history of what was read remains in the audit log.
-- The bytes that were already released are not magic-returned.
+- El paciente revoca la autorización de lectura desde su tablero.
+- El próximo intento de lectura del clínico retorna `REVOKED`.
+- El historial de lo leído permanece en el log de auditoría.
+- Los bytes ya liberados no vuelven por arte de magia.
 
-Honest about the limit. Visible in the runbook.
-
----
-layout: section
----
-
-# Why Stellar
-
----
-
-## Fast. Cheap. Soft-final.
-
-- About a five-second ledger close.
-- Cents-per-event fee envelope.
-- Soft finality the moment a tx is included.
-- An ordinary clinical event is affordable to log on chain.
-- Audit is no longer a quarterly report. It is a stream.
-
----
-
-## Soroban auth makes multi-party signing easy
-
-The pharmacy dispense step is a single transaction with two required signers
-— patient and pharmacy.
-
-Soroban exposes `require_auth(addr)` as a first-class primitive. The
-contract states the rule; the runtime checks the proofs.
-
-No off-chain co-sign relay. No notary service. Just the transaction.
-
----
-
-## Auditability without surveillance
-
-- Every grant, revoke, request, release, prescription, reservation, and
-  dispense is an event on chain.
-- The events do not contain PHI. They contain commitments and principal
-  identifiers.
-- Anyone can verify the chain is consistent.
-- Nobody learns what was treated.
-
-Audit and privacy stop fighting.
+Honesto sobre el límite. Visible en el runbook.
 
 ---
 layout: section
 ---
 
-# What we centralized
+# Por qué Stellar
 
 ---
 
-## Honest about it
+## Rápido. Barato. Finalidad suave.
 
-| Piece | Why centralized for MVP | What that costs |
+- Cierre de ledger en unos cinco segundos.
+- Sobre de tarifa en centavos por evento.
+- Finalidad suave en el momento que la transacción se incluye.
+- Un evento clínico ordinario es asequible de registrar en cadena.
+- La auditoría deja de ser un reporte trimestral. Se vuelve un flujo.
+
+---
+
+## La autorización de Soroban facilita la firma múltiple
+
+El paso de dispensación de la farmacia es una sola transacción con dos firmantes
+requeridos — paciente y farmacia.
+
+Soroban expone `require_auth(addr)` como primitiva de primera clase. El
+contrato declara la regla; el runtime verifica las pruebas.
+
+Sin relé de co-firma fuera de cadena. Sin servicio notarial. Solo la transacción.
+
+---
+
+## Auditabilidad sin vigilancia
+
+- Cada autorización, revocación, solicitud, liberación, prescripción, reserva y
+  dispensación es un evento en cadena.
+- Los eventos no contienen datos clínicos personales. Contienen compromisos e identificadores de principales.
+- Cualquiera puede verificar que la cadena es consistente.
+- Nadie descubre qué fue tratado.
+
+La auditoría y la privacidad dejan de pelear.
+
+---
+layout: section
+---
+
+# Qué centralizamos
+
+---
+
+## Honestos al respecto
+
+| Pieza | Por qué centralizada para el MVP | Qué cuesta |
 | --- | --- | --- |
-| KMS gate | One service, no HSM mesh | Forward-only secrecy |
-| Identity issuance | Seeded role wallets | Not patient-portable yet |
-| Storage | Cloudflare R2 | Single-vendor surface |
-| Indexer | One Postgres | One operational owner |
+| Portal KMS | Un servicio, sin malla de HSM | Confidencialidad solo hacia adelante |
+| Emisión de identidad | Billeteras de rol sembradas | Aún no portable por el paciente |
+| Almacenamiento | Cloudflare R2 | Superficie de un solo proveedor |
+| Indexador | Un Postgres | Un solo dueño operacional |
 
-Each cell is a known liability. None of them weakens the predicate.
+Cada celda es un pasivo conocido. Ninguna debilita el predicado.
 
 ---
 
-## The predicate stays. Always.
+## El predicado se queda. Siempre.
 
-The MVP runs on a single KMS. A real deployment runs on real KMS.
+El MVP corre en un solo KMS. Un despliegue real corre en un KMS real.
 
-The MVP uses one indexer. A real deployment runs many.
+El MVP usa un solo indexador. Un despliegue real corre muchos.
 
-What does **not** change:
+Lo que **no** cambia:
 
-- The grant decides.
-- The revoke decides.
-- The chain witnesses.
-- The patient is the principal.
+- La autorización decide.
+- La revocación decide.
+- La cadena atestigua.
+- El paciente es el principal.
 
 ---
 layout: section
 ---
 
-# Roadmap
+# Hoja de ruta
 
 ---
 
-## Phases
+## Fases
 
-| Phase | What is proven | Status |
+| Fase | Lo que demuestra | Estado |
 | --- | --- | --- |
-| Local manual MVP | Closed loop on stellar-local | In progress |
-| Stellar Testnet | Same loop, three browsers, public | Designed |
-| Hardened KMS | Bytes-revoke and HSM custody | Out of scope |
-| Regulated identity | Verifiable clinician credentials | Out of scope |
-| Mainnet | Patient-owned PHI at scale | Long-term |
+| MVP local manual | Ciclo cerrado en stellar-local | En progreso |
+| Stellar Testnet | El mismo ciclo, tres navegadores, público | Diseñado |
+| KMS endurecido | Revocación de bytes y custodia HSM | Fuera de alcance |
+| Identidad regulada | Credenciales verificables de clínico | Fuera de alcance |
+| Mainnet | Datos clínicos propiedad del paciente, a escala | Largo plazo |
 
 ---
 
-## What it takes to go real
+## Qué se necesita para ir real
 
-- A regulated KMS — Cloud KMS, HSM, or sealed enclave.
-- A clinician credential authority — verifiable claims on chain.
-- A patient identity story — wallet recovery, delegation, end of life.
-- A storage SLA — durability, regional residency, breach response.
-- An ops story — monitoring, paging, incident review.
+- Un KMS regulado — Cloud KMS, HSM, o enclave sellado.
+- Una autoridad de credenciales clínicas — afirmaciones verificables en cadena.
+- Una historia de identidad del paciente — recuperación de billetera, delegación, fin de vida.
+- Un SLA de almacenamiento — durabilidad, residencia regional, respuesta a brechas.
+- Una historia de operaciones — monitoreo, paginación, revisión de incidentes.
 
-The MVP makes these concrete. They are not theoretical anymore.
+El MVP los hace concretos. Ya no son teóricos.
 
 ---
 layout: section
 ---
 
-# Closing
+# Cierre
 
 ---
 
-## What makes this different
+## Lo que hace esto distinto
 
-- Patient is the **principal**, not a signature on a form.
-- Consent is a **transaction**, not a checkbox.
-- Audit is an **event log**, not a quarterly report.
-- Revoke is a **verb**, not a customer-service ticket.
-- The prescription is a **bridge**, not a printed sheet.
+- El paciente es el **principal**, no una firma en un formulario.
+- El consentimiento es una **transacción**, no una casilla.
+- La auditoría es un **log de eventos**, no un reporte trimestral.
+- Revocar es un **verbo**, no un ticket de servicio al cliente.
+- La prescripción es un **puente**, no una hoja impresa.
 
-The dApp is the demo. The architecture is the artifact.
+La dApp es la demo. La arquitectura es el artefacto.
 
 ---
 layout: center
 class: text-center
 ---
 
-# Thank you
+# Gracias
 
-Built on Stellar / Soroban.
+Construido sobre Stellar / Soroban.
 
-Patient first. Predicate first.
+El paciente primero. El predicado primero.
