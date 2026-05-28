@@ -1,6 +1,15 @@
 <script setup lang="ts">
-import { isDark } from '@slidev/client'
-import { computed } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
+
+const isDark = ref(false)
+
+onMounted(() => {
+  isDark.value = document.documentElement.classList.contains('dark')
+})
+
+watch(isDark, (v) => {
+  document.documentElement.classList.toggle('dark', v)
+})
 
 const label = computed(() => (isDark.value ? 'Bright room' : 'Dark room'))
 
