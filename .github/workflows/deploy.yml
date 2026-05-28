@@ -27,15 +27,13 @@ jobs:
           node-version: 22
 
       - name: Enable pnpm via corepack
-        run: |
-          corepack enable
-          corepack prepare pnpm@9 --activate
+        run: corepack enable
 
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
       - name: Build deck
-        run: pnpm build --base "/${{ github.event.repository.name }}/"
+        run: pnpm run build -- --base "/${{ github.event.repository.name }}/"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
